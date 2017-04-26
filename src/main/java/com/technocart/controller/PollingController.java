@@ -1,9 +1,7 @@
 package com.technocart.controller;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by shankarraomata on 4/25/17.
@@ -12,9 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Component
 public class PollingController {
 
-    @RequestMapping("/request")
-    public String index() {
-        return "UP";
+    @RequestMapping(value = "/request", method = RequestMethod.GET)
+    public String getStatus(@RequestParam(value = "id")int id) {
+        return "UP "+id;
+    }
+
+    @RequestMapping(value = "/request/{id}", method = RequestMethod.POST)
+    public String saveStatus(@PathVariable(value = "id")int id) {
+    System.out.println("Hello"+id);
+        return "UP "+id;
     }
 
 }
