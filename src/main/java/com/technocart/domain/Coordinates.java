@@ -1,13 +1,8 @@
 package com.technocart.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Created by shankarraomata on 5/21/17.
  */
-@Getter
-@Setter
 public class Coordinates {
 
     private String vehicleCode;
