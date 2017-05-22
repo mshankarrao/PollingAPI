@@ -1,5 +1,7 @@
 package com.technocart.controller;
 
+import com.technocart.Application;
+import com.technocart.domain.Coordinates;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,12 @@ public class PollingController {
     @RequestMapping(value = "/request/{id}", method = RequestMethod.POST)
     public String saveStatus(@PathVariable(value = "id")int id) {
     System.out.println("Hello"+id);
-        return "UP "+id;
+        return "UP "+id*3;
+    }
+
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    public String saveCoordinates(@RequestBody Coordinates coordinates) {
+    return coordinates.getVehicleCode()+" Latitude " +coordinates.getLatitude() +" Longitude " +coordinates.getLongitude() ;
     }
 
 }
