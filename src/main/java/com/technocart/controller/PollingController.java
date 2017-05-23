@@ -2,6 +2,8 @@ package com.technocart.controller;
 
 import com.technocart.Application;
 import com.technocart.domain.Coordinates;
+import com.technocart.repository.PollingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @Component
 public class PollingController {
 
+    @Autowired
+    private PollingRepository pollingRepository;
+
     @RequestMapping(value = "/request", method = RequestMethod.GET)
     public String getStatus(@RequestParam(value = "id")int id) {
         return "UP "+id;
@@ -19,8 +24,8 @@ public class PollingController {
 
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
-    public String saveCoordinates(@RequestBody Coordinates coordinates) {
-    return coordinates.getVehicleCode()+" Latitude " +coordinates.getLatitude() +" Longitude " +coordinates.getLongitude() ;
+    public void saveCoordinates(@RequestBody Coordinates coordinates) {
+    pollingRepository.save(coordinates);
     }
 
 }
