@@ -1,5 +1,1 @@
-server:
-  port: 8090
 
-health_check:
-  enable_health_check: False

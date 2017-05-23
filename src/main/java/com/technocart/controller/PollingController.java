@@ -17,11 +17,6 @@ public class PollingController {
         return "UP "+id;
     }
 
-    @RequestMapping(value = "/request/{id}", method = RequestMethod.POST)
-    public String saveStatus(@PathVariable(value = "id")int id) {
-    System.out.println("Hello"+id);
-        return "UP "+id*3;
-    }
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String saveCoordinates(@RequestBody Coordinates coordinates) {
